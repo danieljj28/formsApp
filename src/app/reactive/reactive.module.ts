@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     BasicPageComponent,
     DynamicPageComponent,
-    SwitchesPageComponent
+    SwitchesPageComponent,
   ],
   imports: [
     CommonModule,
