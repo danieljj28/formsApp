@@ -10,6 +10,7 @@ export class ValidatorsService {
 
   constructor() {}
 
+  // Register-page
   public canBeStrader = (control: FormControl): ValidationErrors | null => {
     const value: string = control.value.trim().toLowerCase();
 
@@ -22,6 +23,8 @@ export class ValidatorsService {
     return null;
   };
 
+  // Register-page. Validación por formGroup que devuelve una función que devuelve un objeto tipo
+  // ValidationErrors o null.
   public isFieldOneEqualFieldTwo( field1: string, field2: string ) {
     return ( formGroup: AbstractControl ): ValidationErrors | null => {
       const fieldValue1 = formGroup.get(field1)?.value;
@@ -36,22 +39,23 @@ export class ValidatorsService {
     }
   }
 
+  // Todos los componentes o pages
   public isValidField(myForm: FormGroup, field: string): boolean | null {
     return myForm.controls[field].errors && myForm.controls[field].touched;
   }
 
   isValidFieldInArray(formArray: FormArray, index: number): boolean | null {
-    return (
-      formArray.controls[index].errors && formArray.controls[index].touched
-    );
+    return formArray.controls[index].errors && formArray.controls[index].touched;
   }
 
+  // Muestra un mensaje u otro en el formControl name de basic-page
   getFieldError(myForm: FormGroup, field: string): string | null {
     if (!myForm.controls[field]) return null;
 
     const errors = myForm.controls[field].errors || {};
 
     for (const key of Object.keys(errors)) {
+      console.log(key)
       switch (key) {
         case 'required':
           return 'Este campo es requerido';

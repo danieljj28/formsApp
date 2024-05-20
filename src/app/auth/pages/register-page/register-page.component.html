@@ -33,7 +33,7 @@
             placeholder="Email del usuario">
 
           <span *ngIf="isValidField('email')" class="form-text text-danger">
-            Debe de ser en formato de nombre y apellido
+            El correo no es correcto
           </span>
         </div>
       </div>
@@ -48,7 +48,7 @@
             formControlName="username"
             placeholder="Nombre código del usuario">
           <span *ngIf="isValidField('username')" class="form-text text-danger">
-            El username no puede ser Strider
+            El username no puede ser Strider, ni estar vacio
           </span>
         </div>
       </div>
@@ -99,25 +99,46 @@
   </div>
 </div>
 
-
-<h2>Form Valid: {{ myForm.valid }} </h2>
-<h2>Form Status: {{ myForm.status }} </h2>
-<h2>Form Pending: {{ myForm.pending }} </h2>
-<h2>Form errors</h2>
-<pre>{{ myForm.errors| json }}</pre>
-
-<h5>Nombre</h5>
-<pre>{{ myForm.controls['name'].errors| json }}</pre>
-
-<h5>Email</h5>
-<pre>{{ myForm.controls['email'].errors| json }}</pre>
-
-<h5>Username</h5>
-<pre>{{ myForm.controls['username'].errors| json }}</pre>
+<div class="row mt-5">
+  <div class="col-6"> <h4>Form Valid: {{ myForm.valid }} </h4> </div>
+  <div class="col-6"> <h4>Form Status: {{ myForm.status }} </h4> </div>
+  <div class="col-6"> <h4>Form Pending: {{ myForm.pending }} </h4> </div>
+  <div class="col-6"> <h4>Form errors: {{ myForm.errors| json }} </h4> </div>
+</div>
 
 
-<h5>Password</h5>
-<pre>{{ myForm.controls['password'].errors | json }}</pre>
+<div class="row mt-3">
+  <div class="col-6">
+    <h5>Nombre</h5>
+    <pre>{{ myForm.controls['name'].errors| json }}</pre>
+  </div>
 
-<h5>Confirmar</h5>
-<pre>{{ myForm.controls['password2'].errors | json }}</pre>
+  <div class="col-6">
+    <h5>Email</h5>
+    <pre>{{ myForm.controls['email'].errors| json }}</pre>
+  </div>
+
+  <div class="col-6">
+    <h5>Username</h5>
+    <pre>{{ myForm.controls['username'].errors| json }}</pre>
+  </div>
+
+  <div class="col-6">
+    <h5>Password</h5>
+    <pre>{{ myForm.controls['password'].errors | json }}</pre>
+  </div>
+
+  <div class="col-6">
+    <h5>Password2</h5>
+    <pre>{{ myForm.controls['password2'].errors | json }}</pre>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

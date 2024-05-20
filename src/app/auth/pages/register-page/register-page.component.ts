@@ -9,6 +9,20 @@ import { EmailValidatorService } from '../../../shared/validators/email-validato
   selector: 'app-register-page',
   templateUrl: './register-page.component.html'
 })
+
+/*El objetivo de esta clase son las validaciones personalizadas, y también las validaciones por FormGroup
+  en vez de por FormControl.
+  Hay dos tipos de validaciones en general, las síncronas y las asíncronas.
+
+  Para realizar las validaciones personalizadas síncronas no es necesario ningun scope que implementa
+  ninguna interfaz.
+
+  Sin embargo para las validaciones asíncronas es necesario implementar la interfaz AsyncValidator, cuyo
+  núcleo es el método validate, el cual no hace falta llamar, con llamar a la clase vale.
+
+  Para llevar a cabo las validaciones por FormGroup, hay que pasar un objeto como segundo parametro, con la
+  posibilidad de contener dos arrays, el primero para síncronas y el segundo para asíncronas.
+  Esta validación llamara a un método que devuelve una función que devuelve un observable*/
 export class RegisterPageComponent {
 
   public myForm: FormGroup = this.fb.group({
@@ -34,7 +48,6 @@ export class RegisterPageComponent {
   }
 
   onSubmit() {
-    console.log("click")
     this.myForm.markAllAsTouched();
   }
 

@@ -12,7 +12,7 @@
         formControlName="name"
         placeholder="Nombre de la persona">
       <span *ngIf="isValidField('name')" class="form-text text-danger">
-        error message
+        {{ getFieldError('name') }}
       </span>
     </div>
   </div>
@@ -27,7 +27,6 @@
           class="form-control"
           [formControl]="newFavorite"
           placeholder="Agregar favorito">
-
 
         <button
           class="btn btn-outline-primary"
@@ -81,16 +80,24 @@
 
 </form>
 
-
-
-<span>Valid</span>
+<h5 class="firsth5">Valid</h5>
 <pre>{{ myForm.valid| json }}</pre>
-<br>
 
-<span>Value</span>
+<h5>Value</h5>
 <pre>{{ myForm.value| json }}</pre>
-<br>
 
-<span>Agregar Juego</span>
-<pre>{{ newFavorite.valid | json }}</pre>
-<pre>{{ newFavorite.value| json }}</pre>
+
+<div class="row">
+  <h5>Agregar Juego</h5>
+  <div class="col-3">
+    <span>Valid</span>
+    <pre>{{ newFavorite.valid | json }}</pre>
+  </div>
+
+  <div class="col-3">
+    <span>Value</span>
+    <pre>{{ newFavorite.value| json }}</pre>
+  </div>
+</div>
+
+

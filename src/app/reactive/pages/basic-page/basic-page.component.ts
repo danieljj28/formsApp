@@ -2,18 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsService } from '../../../shared/services/validators.service';
 
-const rtx5090 = {
-  name: 'RTX 5090',
-  price: 2500,
-  inStorage: 2
-}
 
 @Component({
   selector: 'app-basic-page',
   templateUrl: './basic-page.component.html',
   styles: ``
 })
-export class BasicPageComponent implements OnInit{
+
+/*El objetivo de esta clase es implementar lo básico de los formularios reactivos, es decir :
+  Creación de un formGroup, el cual contiene controles.
+  Cada control esta relacionado con un input dentro del form de la plantilla html
+  Cada control también tiene una serie de validaciones obligatorias(Validators)
+  En este clase también se comprueba si un campo es valido o no(isValidField) y entonces mostrar
+  un mensaje u otro(getFieldError)*/
+export class BasicPageComponent {
 
   // public myForm: FormGroup = new FormGroup({
   //   name: new FormControl(''),
@@ -32,10 +34,6 @@ export class BasicPageComponent implements OnInit{
     private validatorsService: ValidatorsService
   ) {}
 
-  ngOnInit(): void {
-    // this.myForm.reset(rtx5090);
-  }
-
   isValidField( field: string ): boolean | null {
     return this.validatorsService.isValidField( this.myForm, field );
   }
@@ -44,7 +42,7 @@ export class BasicPageComponent implements OnInit{
     return this.validatorsService.getFieldError( this.myForm, field );
   }
 
-  onSave(): void {
+  onSubmit(): void {
 
     if( this.myForm.invalid ) {
       this.myForm.markAllAsTouched();

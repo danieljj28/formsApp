@@ -5,13 +5,18 @@ import { ValidatorsService } from '../../../shared/services/validators.service';
 @Component({
   selector: 'app-switches-page',
   templateUrl: './switches-page.component.html',
-  styles: ``
+  styles: `.firsth5{
+    margin-top: 3rem;
+  }`
 })
+
+/*El objetivo de este componente es la utilización de inputs de tipo Switch.
+  Como acceder a sus valores y el tipo de validators que se utiliza */
 export class SwitchesPageComponent implements OnInit{
 
   public myForm: FormGroup = this.fb.group({
     gender : ['M', [ Validators.required ] ],
-    wantNotifications: [true, [ Validators.required ] ],
+    wantNotifications: [true, [ Validators.requiredTrue ] ],
     termsAndConditions: [false, [ Validators.requiredTrue ] ]
   });
 
@@ -44,7 +49,7 @@ export class SwitchesPageComponent implements OnInit{
 
     this.person = newPerson;
 
-    this.myForm.reset( this.person )
+    this.myForm.reset( {gender: this.person.gender} )
 
   }
 

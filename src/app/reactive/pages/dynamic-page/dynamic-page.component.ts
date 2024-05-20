@@ -5,8 +5,15 @@ import { ValidatorsService } from '../../../shared/services/validators.service';
 @Component({
   selector: 'app-dynamic-page',
   templateUrl: './dynamic-page.component.html',
-  styles: ``
+  styles: `.firsth5{
+    margin-top: 3rem;
+  }`
 })
+
+/*El objetivo de este componente es desarrollar un Formulario que utilice el formArray.
+  El nombre de dynamics hace referiencia a que un formArray puede aumentar o reducir el numero
+  de controles que contiene.
+  Es por eso que aqui hemos realizado funciones que añaden y eliminan controles del formArray. */
 export class DynamicPageComponent {
 
   public myForm: FormGroup = this.fb.group({
@@ -41,6 +48,7 @@ export class DynamicPageComponent {
   }
 
   onAddToFavorites(): void {
+    console.log(this.favoriteGamesControl.controls);
     if( this.newFavorite.invalid ) return;
 
     this.favoriteGamesControl.push(
